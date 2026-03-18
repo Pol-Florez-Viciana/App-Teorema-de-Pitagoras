@@ -1,0 +1,115 @@
+﻿<!DOCTYPE html>
+<head>
+<html lang="ES" >
+	<meta charset="UTF-8" >
+	<meta name="author" content="Pol Flórez Viciana" >
+	<meta name="owner" content="Pol Flórez Viciana" >
+	<meta name="keywords" content="Inicial" >
+	<title>App del Teorema de Pitágoras 3.0</title>
+	<meta name="description" content="Aplicación del teorema de Pitágoras sobre las Ternas Pitagóricas y también las Ternas Polidianas." >
+	<meta name="robots" content="index, dofollow" >
+	
+	<script src="./JavaScript/modulo-teorema-pitagoras.js" ></script>
+	
+	<link rel="stylesheet" href="./CSS/Atributos-de-Pagina.css">
+	
+</head>
+<body onload="Cargar()">
+	<center>
+		<header>
+			<table><tr><td><img style="width: 64px;" src="./imagenes/Logo-Pol-Software.png" /></td><td><h1 id="Titulo">Teorema Pitágoras 3.0</h1></td></tr></table>
+		</header>
+		
+		<!-- Aquí empieza cada pantalla -->
+		
+		<!-- Pantalla 1 -->
+		<section id="Pantalla1">
+			<table>
+			<tr>
+			<td><img style="width: 64px;" src="./imagenes/Logo-Pol-Software.png" /></td>
+			<td><h2>Selecciona la Opción</h2></td>
+			<td><input class="MyInput" style="background-color: green; color: white;" type="button" id="BtnAyuda" name="BtnAyuda" onclick="Ir4()" value="Ayuda" title="Ir a la Ayuda" /></td>
+			</tr>
+			</table>
+			<h3>Tienes 2 Opciones</h3>
+			<br>
+			<p>Selecciona una opción.</p>
+			<br><br>
+			<input class="MyInput" type="button" id="BtnTeoremaPitagoras" onclick="Ir2()" value="Ver el Teorema de Pitágoras" title="Ir al Teorema de Pitágoras." />
+			<input class="MyInput" type="button" id="BtnTeoremaPol" onclick="Ir3()" value="Ver Ternas Polidianas" title="Ir al Teorema de las Ternas Polidianas." />
+			
+		</section>
+		
+		<!-- Pantalla 2 -->
+		<section id="Pantalla2">
+			<table>
+			<tr>
+			<td><img style="width: 64px;" src="./imagenes/Logo-Pol-Software.png" /></td>
+			<td><h2>Teorema de Pitágoras</h2></td>
+			<td><input class="MyInput" style="background-color: red; color: white;" type="button" onclick="Ir1()" value="X" title="Salir" /><br></td>
+			</tr>
+			</table>
+			<canvas id="Pantalla" style="background-color: white;" width="300" height="300" ></canvas>
+			<br>
+			<p>Inserta un mínimo de 2 valores y pulsa calcular con el teorema de Pitágoras.</p>
+			<br>
+			A: <input type="text" id="ElInput1" value="3" style="width: 100px; background-color: green; color: white;" />
+			B: <input type="text" id="ElInput2" value="4" style="width: 100px; background-color: blue; color: white;" />
+			C: <input type="text" id="ElInput3" value="" style="width: 100px; background-color: red; color: white;" />
+			<br><br>
+			<input type="button" id="ElButton1" class="MyInput" value="Calcular Teorema de Pitágoras" onclick="CalcularTeoremaPitagoras()" />
+			<br><br>
+			<label id="Resultado1">Resultado.</label>
+			<br><br>
+		</section>
+		
+		<!-- Pantalla 3 -->
+		<section id="Pantalla3">
+			<table>
+			<tr>
+			<td><img style="width: 64px;" src="./imagenes/Logo-Pol-Software.png" /></td>
+			<td><h2>Teorema de las Ternas Polidianas</h2></td>
+			<td><input class="MyInput" style="background-color: red; color: white;" type="button" onclick="Ir1()" value="X" title="Salir" /><br></td>
+			</tr>
+			</table>
+			<p>Inserta los 2 valores de lados del ángulo recto de una terna Pitagórica para ver las ternas Polidianas.</p>
+			<br>
+			A: <input type="text" id="ElInput4" value="3" style="width: 100px; background-color: green; color: white;" />
+			B: <input type="text" id="ElInput5" value="4" style="width: 100px; background-color: blue; color: white;" />
+			<br><br>
+			<input type="button" id="ElButton2" class="MyInput" value="Calcular Teorema de Pol" onclick="CalcularTeoremaPol()" />
+			<br><br>
+			<label id="Resultado2">Resultado.</label>
+			<br><br>
+		</section>
+		
+		<!-- Pantalla 4 -->
+		<section id="Pantalla4">
+			<table>
+			<tr>
+			<td><img style="width: 64px;" src="./imagenes/Logo-Pol-Software.png" /></td>
+			<td><h2>Ayuda Teorema Pitágoras</h2></td>
+			<td><input class="MyInput" style="background-color: red; color: white;" type="button" onclick="Ir1()" value="X" title="Salir" /><br></td>
+			</tr>
+			</table>
+			<p>El teorema de Pitágoras cumple lo siguiente con 2 lados de los triángulos rectángulos:<br>
+				(A·A)+(B·B)=(C·C)<br>
+				<br>
+				Así esto cumple por consiguiente que:<br>
+				(C·C)-(B·B)=(A·A)<br>
+				(C·C)-(A·A)=(B·B)<br>
+				<br>
+				Así, cuando (A·A)+(B·B)=(C·C) es exacta y finita, se considera Terna Pitagórica.<br>
+				<br>
+			</p>
+			<br><br>
+			<p>Tienes la documentación sobre esto en la web de Pol:</p>
+			<br><br>
+			<a href="https://dos-a-la-tres.com/matematicas.php" target="_blank" >Matemáticas</a><br>
+			<br><br>
+		</section>
+		
+		<footer id="FechaInicioFechaFin" ><a href="mailto:polflorez@hotmail.com">polflorez@hotmail.com</a> ~ 18/04/2025 - 17/03/2026</footer>
+	</center>	
+</body>
+</html>

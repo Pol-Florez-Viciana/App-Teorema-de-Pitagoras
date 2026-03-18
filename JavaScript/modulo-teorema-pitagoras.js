@@ -1,0 +1,261 @@
+var LadoA = 3;
+var LadoB = 4;
+var LadoC = 0;
+
+function Cargar(){
+	const Pantalla = document.getElementById("Pantalla");
+	const ctx = Pantalla.getContext("2d");
+	ctx.clearRect(0,0,300,300);
+	ctx.fillStyle = "white";
+	ctx.fillRect(0, 0, 300, 300);
+	ctx.font = "20px Georgia";
+	ctx.strokeStyle = "blue";
+	ctx.strokeText("Inserte Valores", 80, 150);
+	
+}
+
+function PintarPantalla(TipoTriangulo){
+	const Pantalla = document.getElementById("Pantalla");
+	const ctx = Pantalla.getContext("2d");
+	ctx.clearRect(0,0,300,300);
+	ctx.beginPath();
+	ctx.fillStyle = "white";
+	ctx.fillRect(0, 0, 300, 300);
+	
+	
+	var Izquierda = 0;
+	var Arriba = 0;
+	
+	if (parseFloat(LadoA) >= parseFloat(LadoB)){
+		Izquierda = PorUnidaje(LadoA,LadoA,260);
+		Arriba = PorUnidaje(LadoB,LadoA,260);
+	}else{
+		Izquierda = PorUnidaje(LadoA,LadoB,260);
+		Arriba = PorUnidaje(LadoB,LadoB,260);
+	}
+	
+	
+	// pinto el interior con una nueva figura triángulo amarillo
+	ctx.fillStyle = "yellow";
+	ctx.strokeStyle = "yellow";
+	ctx.lineWidth = 2;
+	ctx.beginPath();
+	// Iniciamos
+	ctx.moveTo(22, 22);
+	// Arriba
+	ctx.lineTo(22, Arriba - 4);
+	// Izquierda
+	ctx.lineTo(22 + (Izquierda - 4), 22);
+	// Hipotenusa
+	ctx.moveTo(22 + (Izquierda - 4), 22);
+	ctx.lineTo(22, Arriba - 4);
+	ctx.fill();
+	ctx.stroke();
+	
+	ctx.fillStyle = "orange";
+	ctx.strokeStyle = "orange";
+	ctx.lineWidth = 5;
+	ctx.beginPath();
+	ctx.moveTo(22 + (Izquierda - 4) , 22);
+	ctx.lineTo(22 + (Izquierda - 4) , Arriba - 1 );
+	// Izquierda
+	ctx.lineTo(22 ,  Arriba - 1);
+	ctx.fill();
+	ctx.stroke();
+	
+	ctx.strokeStyle = "blue";
+	ctx.beginPath();
+	ctx.moveTo(20, 20);
+	// Pinto un Lado de Arriba a Abajo
+	ctx.lineTo(20, Arriba);
+	//ctx.closePath();
+	ctx.stroke();
+	// Pinto un lado de Izquierda a Derecha
+	ctx.beginPath();
+	ctx.strokeStyle = "green";
+	ctx.lineWidth = 5;
+	ctx.moveTo(20, 20);
+	ctx.lineTo(20 + Izquierda, 20);
+	ctx.stroke();
+	// Pinto la hipotenusa
+	ctx.beginPath();
+	ctx.strokeStyle = "red";
+	ctx.lineWidth = 5;
+	ctx.moveTo(20 + Izquierda, 20);
+	ctx.lineTo(20, Arriba);
+	ctx.stroke();
+	
+	// Escribo las letras y titulos
+	ctx.lineWidth = 1;
+	ctx.font = "20px Georgia";
+	ctx.strokeStyle = "blue";
+	ctx.strokeText("B", 25, 80);
+	ctx.strokeStyle = "green";
+	ctx.strokeText("A", 60, 40);
+	ctx.lineWidth = 1;
+	ctx.strokeStyle = "red";
+	ctx.strokeText("C", (Izquierda / 2 ) , (Arriba / 2));
+	ctx.font = "15px Arial";
+	ctx.strokeStyle = "gray";
+	ctx.strokeText("Triángulo Rectángulo " + TipoTriangulo, 40, 285);
+	
+	
+}
+function CalcularTeoremaPitagoras(){
+	var ElDato1 = document.getElementById("ElInput1").value;
+	var ElDato2 = document.getElementById("ElInput2").value;
+	var ElDato3 = document.getElementById("ElInput3").value;
+	if (ElDato1 == "" ) { ElDato1 = 0; }
+	if (ElDato2 == "" ) { ElDato2 = 0; }
+	if (ElDato3 == "" ) { ElDato3 = 0; }
+	if (ElDato1 < 0 ) { ElDato1 = ElDato1 - ElDato1 - ElDato1; }
+	if (ElDato2 < 0 ) { ElDato2 = ElDato2 - ElDato2 - ElDato2; }
+	if (ElDato3 < 0 ) { ElDato3 = ElDato3 - ElDato3 - ElDato3; }
+	var Resultado = 0;
+	var A = 0;
+	var B = 0;
+	var C = 0;
+	var Sumas = 0;
+
+	if ( ElDato1 != 0 && ElDato2 != 0 ){ 
+		A = Math.pow(parseFloat(ElDato1),2);
+		B = Math.pow(parseFloat(ElDato2),2);
+		Sumas = parseFloat(A + B);
+		Resultado = Math.sqrt(Sumas);
+		document.getElementById("Resultado1").innerHTML = "(" + A + ")+(" + B + ")=" + Sumas + " donde " + Sumas + "yRoot2=C=" + Resultado;
+		LadoA = parseFloat(ElDato1);
+		LadoB = parseFloat(ElDato2);
+		LadoC = parseFloat(Resultado);
+		var EsTerna = " No es Terna Pitagórica.";
+		var LargadaC = "" + Cuadrado(LadoC);
+		var LargadaLadoC = "" + LadoC;
+		if (Cuadrado(LadoA)+Cuadrado(LadoB)==Cuadrado(LadoC) && LargadaC.length >= LargadaLadoC.length ){ EsTerna = " es Terna Pitagórica."; }
+		document.getElementById("Resultado1").innerHTML = document.getElementById("Resultado1").innerHTML + '<br><label style="color: yellow;">(' + LadoA + "^2)+(" + LadoB + "^2)=(" + LadoC + "^2)</label>" + EsTerna;
+		var TipoT = "";
+		if ( LadoA == LadoB ){ TipoT = "Isósceles"; }else{ TipoT = "Escaleno"; }
+		PintarPantalla(TipoT); 
+		return 
+	}
+	if ( ElDato1 != 0 && ElDato3 != 0 ){ 
+		A = Math.pow(parseFloat(ElDato1),2);
+		C = Math.pow(parseFloat(ElDato3),2);
+		Sumas = parseFloat(C - A);
+		Resultado = Math.sqrt(Sumas);
+		document.getElementById("Resultado1").innerHTML = "(" + C + ")-(" + A + ")=" + Sumas + " donde " + Sumas + "yRoot2=B=" + Resultado;
+		LadoA = parseFloat(ElDato1);
+		LadoC = parseFloat(ElDato3);
+		LadoB = parseFloat(Resultado);
+		var EsTerna = " No es Terna Pitagórica.";
+		var LargadaC = "" + Cuadrado(LadoC);
+		var LargadaLadoC = "" + LadoC;
+		if (Cuadrado(LadoA)+Cuadrado(LadoB)==Cuadrado(LadoC) && LargadaC.length >= LargadaLadoC.length ){ EsTerna = " es Terna Pitagórica."; }
+		document.getElementById("Resultado1").innerHTML = document.getElementById("Resultado1").innerHTML + '<br><label style="color: yellow;">(' + LadoA + "^2)+(" + LadoB + "^2)=(" + LadoC + "^2)</label>" + EsTerna;
+		var TipoT = "";
+		if ( LadoA == LadoB ){ TipoT = "Isósceles"; }else{ TipoT = "Escaleno"; }
+		PintarPantalla(TipoT);
+		return
+	}
+	if ( ElDato2 != 0 && ElDato3 != 0 ){ 
+		B = Math.pow(parseFloat(ElDato2),2);
+		C = Math.pow(parseFloat(ElDato3),2);
+		Sumas = parseFloat(C - B);
+		Resultado = Math.sqrt(Sumas);
+		document.getElementById("Resultado1").innerHTML = "(" + C + ")-(" + B + ")=" + Sumas + " donde " + Sumas + "yRoot2=A=" + Resultado;
+		LadoC = parseFloat(ElDato3);
+		LadoB = parseFloat(ElDato2);
+		LadoA = parseFloat(Resultado);
+		var EsTerna = " No es Terna Pitagórica.";
+		var LargadaC = "" + Cuadrado(LadoC);
+		var LargadaLadoC = "" + LadoC;
+		if (Cuadrado(LadoA)+Cuadrado(LadoB)==Cuadrado(LadoC) && LargadaC.length >= LargadaLadoC.length ){ EsTerna = " es Terna Pitagórica."; }
+		document.getElementById("Resultado1").innerHTML = document.getElementById("Resultado1").innerHTML + '<br><label style="color: yellow;">(' + LadoA + "^2)+(" + LadoB + "^2)=(" + LadoC + "^2)</label>" + EsTerna;
+		var TipoT = "";
+		if ( LadoA == LadoB ){ TipoT = "Isósceles"; }else{ TipoT = "Escaleno"; }
+		PintarPantalla(TipoT);
+		return 
+	}	
+	Cargar();
+}
+function CalcularTeoremaPol(){
+	var ElDato1 = parseFloat(document.getElementById("ElInput4").value);
+	var ElDato2 = parseFloat(document.getElementById("ElInput5").value);
+	//var ElDato3 = parseFloat(document.getElementById("ElInput6").value);
+	if (ElDato1 < 0 ) { ElDato1 = ElDato1 - ElDato1 - ElDato1; }
+	if (ElDato2 < 0 ) { ElDato2 = ElDato2 - ElDato2 - ElDato2; }
+	
+	var A = 0;
+	var B = 0;
+	var C = 0;
+	var D = 0;
+	if (ElDato1 >= 1 && ElDato2 >= 1){
+		A = Antecuadrado(ElDato1);
+		B = Antecuadrado(ElDato1 - 1);
+		if (A < 0 ) { A = A - A - A; }
+		if (B < 0 ) { B = B - B - B; }
+		
+		C = Antecuadrado(ElDato2);
+		D = Antecuadrado(ElDato2 - 1);
+		if (C < 0 ) { C = C - C - C; }
+		if (D < 0 ) { D = D - D - D; }
+	}else{
+		if (ElDato1 >= 1 ){
+			A = Antecuadrado(ElDato1);
+			B = Antecuadrado(ElDato1 - 1);
+			if (A < 0 ) { A = A - A - A; }
+			if (B < 0 ) { B = B - B - B; }
+		}else{
+			A = Antecuadrado(ElDato1);
+			B = Antecuadrado(ElDato1 - 1);
+		}
+		if (ElDato2 >= 1 ){
+			C = Antecuadrado(ElDato2);
+			D = Antecuadrado(ElDato2 - 1);
+			if (C < 0 ) { C = C - C - C; }
+			if (D < 0 ) { D = D - D - D; }
+		}else{
+			C = Antecuadrado(ElDato2);
+			D = Antecuadrado(ElDato2 - 1);
+		}	
+	}
+	
+	var Sumas = A + B + C + D;
+
+	if (Sumas < 0 ) { Sumas = Sumas - Sumas - Sumas; }
+	
+	var Resultado = Math.sqrt(Sumas);
+	
+	document.getElementById("Resultado2").innerHTML = "Terna Polidiana: (" + A + "+" + B + ")+(" + C + "+" + D + ")=(" + (A+B) + "+" + (C+D) + ")" ;			
+}
+function Cuadrado(Numero){
+	return Numero*Numero;
+}
+function Antecuadrado(Numero){
+	return Numero * ((Numero / 2)+0.5);
+}
+function PorUnidaje(Cuantia,Tamano,Escala){
+	return (Cuantia*Escala)/Tamano;
+}
+function Ir1(){
+	document.getElementById("Pantalla1").style = "display: inline-block;";
+	document.getElementById("Pantalla2").style = "display: none;";
+	document.getElementById("Pantalla3").style = "display: none;";
+	document.getElementById("Pantalla4").style = "display: none;";
+}
+function Ir2(){
+	document.getElementById("Pantalla1").style = "display: none;";
+	document.getElementById("Pantalla2").style = "display: inline-block;";
+	document.getElementById("Pantalla3").style = "display: none;";
+	document.getElementById("Pantalla4").style = "display: none;";
+}
+function Ir3(){
+	document.getElementById("Pantalla1").style = "display: none;";
+	document.getElementById("Pantalla2").style = "display: none;";
+	document.getElementById("Pantalla3").style = "display: inline-block;";
+	document.getElementById("Pantalla4").style = "display: none;";
+}
+function Ir4(){
+	document.getElementById("Pantalla1").style = "display: none;";
+	document.getElementById("Pantalla2").style = "display: none;";
+	document.getElementById("Pantalla3").style = "display: none;";
+	document.getElementById("Pantalla4").style = "display: inline-block;";
+}

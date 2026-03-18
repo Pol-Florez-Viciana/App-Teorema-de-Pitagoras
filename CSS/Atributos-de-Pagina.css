@@ -1,0 +1,77 @@
+* { margin: 0px; }
+
+body {
+		background-color: rgb(0,0,0); text-align: center;
+} 
+h1 {
+	color: rgb(128,128,255); text-align: center; text-shadow: 0px 0px 25px green; margin: 0px;
+}
+h2 {
+	color: rgb(128,255,128); text-align: center; text-shadow: 0px 0px 25px white; margin: 0px;
+}
+h3 {
+	color: rgb(255,127,0); text-align: center; text-shadow: 0px 0px 25px white; margin: 0px;
+}
+p {
+	color: white; text-align: left;
+}
+a {
+	cursor: pointer;
+	padding: 5px 5px 5px 5px;
+	color: yellow;
+	transition: all 0.8s linear;
+}
+a:link { color: rgb(255,255,0); } 
+a:visited { color: rgb(255,255,128); } 
+a:hover { color: rgb(255,0,0); }
+img { margin: 5px; }
+#Titulo { text-align: center; }
+
+.MyInput {
+	cursor: pointer;
+	border-radius: 15px;
+	text-align: center; margin: 2px;
+}
+section {
+	vertical-align: text-top;
+	width: 92%; min-width: 420px; max-width: 840px; padding: 10px; 
+	background-color: rgb(32,32,32);
+	border-radius: 25px;	
+	position: absolute; 
+	top: 50%; left: 50%; 
+	transform: translate(-50%,-50%);
+	color: white;
+}
+#FechaInicioFechaFin{
+	position: fixed;
+	right: 5px;
+	bottom: 5px;
+	color: white;
+}
+#Pantalla1 {
+	display: inline-block;	
+}
+#Pantalla2 {
+	display: none;
+}
+#Pantalla3 {
+	display: none;
+}
+#Pantalla4 {
+	display: none;
+}
+.Centrado{
+	vertical-align: top;
+	display: inline-block;
+	text-align: center;
+}
+.Izquierda{
+	vertical-align: top;
+	display: inline-block;
+	text-align: left;
+}
+.Derecha{
+	vertical-align: top;
+	display: inline-block;
+	text-align: right;
+}
