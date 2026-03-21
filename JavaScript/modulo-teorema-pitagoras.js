@@ -1,12 +1,12 @@
-var LadoA = 3;
-var LadoB = 4;
+var LadoA = 0;
+var LadoB = 0;
 var LadoC = 0;
 
 function Cargar(){
 	const Pantalla = document.getElementById("Pantalla");
 	const ctx = Pantalla.getContext("2d");
 	ctx.clearRect(0,0,300,300);
-	ctx.fillStyle = "white";
+	ctx.fillStyle = "gray";
 	ctx.fillRect(0, 0, 300, 300);
 	ctx.font = "20px Georgia";
 	ctx.strokeStyle = "blue";
@@ -15,11 +15,16 @@ function Cargar(){
 }
 
 function PintarPantalla(TipoTriangulo){
+	// Comprobación de si existen medidas de lados
+	if (Number.isNaN(LadoA) == true ){ Cargar(); return; }
+	if (Number.isNaN(LadoB) == true ){ Cargar(); return; }
+	if (Number.isNaN(LadoC) == true ){ Cargar(); return; }
+	// Comprobado pasamos a pintar la pantalla 
 	const Pantalla = document.getElementById("Pantalla");
 	const ctx = Pantalla.getContext("2d");
 	ctx.clearRect(0,0,300,300);
 	ctx.beginPath();
-	ctx.fillStyle = "white";
+	ctx.fillStyle = "gray";
 	ctx.fillRect(0, 0, 300, 300);
 	
 	
@@ -89,14 +94,23 @@ function PintarPantalla(TipoTriangulo){
 	ctx.lineWidth = 1;
 	ctx.font = "20px Georgia";
 	ctx.strokeStyle = "blue";
-	ctx.strokeText("B", 25, 80);
+	ctx.strokeText("B", 2, 35);
 	ctx.strokeStyle = "green";
-	ctx.strokeText("A", 60, 40);
+	ctx.strokeText("A", 25, 15);
 	ctx.lineWidth = 1;
 	ctx.strokeStyle = "red";
-	ctx.strokeText("C", (Izquierda / 2 ) , (Arriba / 2));
+	if (Arriba < 55){
+		ctx.strokeText("C", 2, 55);
+	}else{
+		ctx.strokeText("C", 2, Arriba);
+	}
+	if (Izquierda < 45){
+		ctx.strokeText("C", 45, 15);
+	}else{
+		ctx.strokeText("C", Izquierda, 15);
+	}
 	ctx.font = "15px Arial";
-	ctx.strokeStyle = "gray";
+	ctx.strokeStyle = "black";
 	ctx.strokeText("Triángulo Rectángulo " + TipoTriangulo, 40, 285);
 	
 	
@@ -105,19 +119,22 @@ function CalcularTeoremaPitagoras(){
 	var ElDato1 = document.getElementById("ElInput1").value;
 	var ElDato2 = document.getElementById("ElInput2").value;
 	var ElDato3 = document.getElementById("ElInput3").value;
-	if (ElDato1 == "" ) { ElDato1 = 0; }
-	if (ElDato2 == "" ) { ElDato2 = 0; }
-	if (ElDato3 == "" ) { ElDato3 = 0; }
+	if (ElDato1.length == 0 ) { ElDato1 = 0; }
+	if (ElDato2.length == 0 ) { ElDato2 = 0; }
+	if (ElDato3.length == 0 ) { ElDato3 = 0; }
 	if (ElDato1 < 0 ) { ElDato1 = ElDato1 - ElDato1 - ElDato1; }
 	if (ElDato2 < 0 ) { ElDato2 = ElDato2 - ElDato2 - ElDato2; }
 	if (ElDato3 < 0 ) { ElDato3 = ElDato3 - ElDato3 - ElDato3; }
+	
 	var Resultado = 0;
 	var A = 0;
 	var B = 0;
 	var C = 0;
 	var Sumas = 0;
-
-	if ( ElDato1 != 0 && ElDato2 != 0 ){ 
+	
+	
+		
+	if ( parseFloat(ElDato1) != 0 && parseFloat(ElDato2) != 0 && parseFloat(ElDato3) == 0 ){ 
 		A = Math.pow(parseFloat(ElDato1),2);
 		B = Math.pow(parseFloat(ElDato2),2);
 		Sumas = parseFloat(A + B);
@@ -126,17 +143,26 @@ function CalcularTeoremaPitagoras(){
 		LadoA = parseFloat(ElDato1);
 		LadoB = parseFloat(ElDato2);
 		LadoC = parseFloat(Resultado);
+		if (Number.isNaN(LadoA) == true ){ Cargar(); return; }
+		if (Number.isNaN(LadoB) == true ){ Cargar(); return; }
+		if (Number.isNaN(LadoC) == true ){ Cargar(); return; }
 		var EsTerna = " No es Terna Pitagórica.";
 		var LargadaC = "" + Cuadrado(LadoC);
 		var LargadaLadoC = "" + LadoC;
 		if (Cuadrado(LadoA)+Cuadrado(LadoB)==Cuadrado(LadoC) && LargadaC.length >= LargadaLadoC.length ){ EsTerna = " es Terna Pitagórica."; }
 		document.getElementById("Resultado1").innerHTML = document.getElementById("Resultado1").innerHTML + '<br><label style="color: yellow;">(' + LadoA + "^2)+(" + LadoB + "^2)=(" + LadoC + "^2)</label>" + EsTerna;
+		var GradoLadoB = Grados(LadoA,LadoB,LadoC);
+		var GradoLadoA = 90 - Grados(LadoA,LadoB,LadoC);
+		document.getElementById("Resultado1").innerHTML = document.getElementById("Resultado1").innerHTML + "<br>Ángulos: " + GradoLadoA + " y " + GradoLadoB;
+		var Perimetro = LadoA + LadoB + LadoC;
+		var Area = (LadoA * LadoB)/2;
+		document.getElementById("Resultado1").innerHTML = document.getElementById("Resultado1").innerHTML + "<br>Perimetro: " + Perimetro + " Área: " + Area;
 		var TipoT = "";
 		if ( LadoA == LadoB ){ TipoT = "Isósceles"; }else{ TipoT = "Escaleno"; }
 		PintarPantalla(TipoT); 
 		return 
 	}
-	if ( ElDato1 != 0 && ElDato3 != 0 ){ 
+	if ( parseFloat(ElDato1) != 0 && parseFloat(ElDato3) != 0 && parseFloat(ElDato2) == 0 ){ 
 		A = Math.pow(parseFloat(ElDato1),2);
 		C = Math.pow(parseFloat(ElDato3),2);
 		Sumas = parseFloat(C - A);
@@ -145,17 +171,26 @@ function CalcularTeoremaPitagoras(){
 		LadoA = parseFloat(ElDato1);
 		LadoC = parseFloat(ElDato3);
 		LadoB = parseFloat(Resultado);
+		if (Number.isNaN(LadoA) == true ){ Cargar(); return; }
+		if (Number.isNaN(LadoB) == true ){ Cargar(); return; }
+		if (Number.isNaN(LadoC) == true ){ Cargar(); return; }
 		var EsTerna = " No es Terna Pitagórica.";
 		var LargadaC = "" + Cuadrado(LadoC);
 		var LargadaLadoC = "" + LadoC;
 		if (Cuadrado(LadoA)+Cuadrado(LadoB)==Cuadrado(LadoC) && LargadaC.length >= LargadaLadoC.length ){ EsTerna = " es Terna Pitagórica."; }
 		document.getElementById("Resultado1").innerHTML = document.getElementById("Resultado1").innerHTML + '<br><label style="color: yellow;">(' + LadoA + "^2)+(" + LadoB + "^2)=(" + LadoC + "^2)</label>" + EsTerna;
+		var GradoLadoB = Grados(LadoA,LadoB,LadoC);
+		var GradoLadoA = 90 - Grados(LadoA,LadoB,LadoC);
+		document.getElementById("Resultado1").innerHTML = document.getElementById("Resultado1").innerHTML + "<br>Ángulos: " + GradoLadoA + " y " + GradoLadoB;
+		var Perimetro = LadoA + LadoB + LadoC;
+		var Area = (LadoA * LadoB)/2;
+		document.getElementById("Resultado1").innerHTML = document.getElementById("Resultado1").innerHTML + "<br>Perimetro: " + Perimetro + " Área: " + Area;
 		var TipoT = "";
 		if ( LadoA == LadoB ){ TipoT = "Isósceles"; }else{ TipoT = "Escaleno"; }
 		PintarPantalla(TipoT);
 		return
 	}
-	if ( ElDato2 != 0 && ElDato3 != 0 ){ 
+	if ( parseFloat(ElDato2) != 0 && parseFloat(ElDato3) != 0 && parseFloat(ElDato1) == 0 ){ 
 		B = Math.pow(parseFloat(ElDato2),2);
 		C = Math.pow(parseFloat(ElDato3),2);
 		Sumas = parseFloat(C - B);
@@ -164,11 +199,20 @@ function CalcularTeoremaPitagoras(){
 		LadoC = parseFloat(ElDato3);
 		LadoB = parseFloat(ElDato2);
 		LadoA = parseFloat(Resultado);
+		if (Number.isNaN(LadoA) == true ){ Cargar(); return; }
+		if (Number.isNaN(LadoB) == true ){ Cargar(); return; }
+		if (Number.isNaN(LadoC) == true ){ Cargar(); return; }
 		var EsTerna = " No es Terna Pitagórica.";
 		var LargadaC = "" + Cuadrado(LadoC);
 		var LargadaLadoC = "" + LadoC;
 		if (Cuadrado(LadoA)+Cuadrado(LadoB)==Cuadrado(LadoC) && LargadaC.length >= LargadaLadoC.length ){ EsTerna = " es Terna Pitagórica."; }
 		document.getElementById("Resultado1").innerHTML = document.getElementById("Resultado1").innerHTML + '<br><label style="color: yellow;">(' + LadoA + "^2)+(" + LadoB + "^2)=(" + LadoC + "^2)</label>" + EsTerna;
+		var GradoLadoB = Grados(LadoA,LadoB,LadoC);
+		var GradoLadoA = 90 - Grados(LadoA,LadoB,LadoC);
+		document.getElementById("Resultado1").innerHTML = document.getElementById("Resultado1").innerHTML + "<br>Ángulos: " + GradoLadoA + " y " + GradoLadoB;
+		var Perimetro = LadoA + LadoB + LadoC;
+		var Area = (LadoA * LadoB)/2;
+		document.getElementById("Resultado1").innerHTML = document.getElementById("Resultado1").innerHTML + "<br>Perimetro: " + Perimetro + " Área: " + Area;
 		var TipoT = "";
 		if ( LadoA == LadoB ){ TipoT = "Isósceles"; }else{ TipoT = "Escaleno"; }
 		PintarPantalla(TipoT);
@@ -225,6 +269,9 @@ function CalcularTeoremaPol(){
 	var Resultado = Math.sqrt(Sumas);
 	
 	document.getElementById("Resultado2").innerHTML = "Terna Polidiana: (" + A + "+" + B + ")+(" + C + "+" + D + ")=(" + (A+B) + "+" + (C+D) + ")" ;			
+}
+function Grados(LadoA,LadoB,Hipotenusa){
+	return 90 * ((LadoB/Hipotenusa)*(LadoA/Hipotenusa));
 }
 function Cuadrado(Numero){
 	return Numero*Numero;

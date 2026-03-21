@@ -5,7 +5,7 @@
 	<meta name="author" content="Pol Flórez Viciana" >
 	<meta name="owner" content="Pol Flórez Viciana" >
 	<meta name="keywords" content="Inicial" >
-	<title>App del Teorema de Pitágoras 3.0</title>
+	<title>App del Teorema de Pitágoras 4.0</title>
 	<meta name="description" content="Aplicación del teorema de Pitágoras sobre las Ternas Pitagóricas y también las Ternas Polidianas." >
 	<meta name="robots" content="index, dofollow" >
 	
@@ -17,7 +17,7 @@
 <body onload="Cargar()">
 	<center>
 		<header>
-			<table><tr><td><img style="width: 64px;" src="./imagenes/Logo-Pol-Software.png" /></td><td><h1 id="Titulo">Teorema Pitágoras 3.0</h1></td></tr></table>
+			<table><tr><td><img style="width: 64px;" src="./imagenes/Logo-Pol-Software.png" /></td><td><h1 id="Titulo">Teorema Pitágoras 4.0</h1></td></tr></table>
 		</header>
 		
 		<!-- Aquí empieza cada pantalla -->
@@ -49,18 +49,16 @@
 			<td><input class="MyInput" style="background-color: red; color: white;" type="button" onclick="Ir1()" value="X" title="Salir" /><br></td>
 			</tr>
 			</table>
-			<canvas id="Pantalla" style="background-color: white;" width="300" height="300" ></canvas>
+			<canvas id="Pantalla" style="background-color: gray;" width="300" height="300" ></canvas>
+			<p style="text-align: justify;">Inserta un mínimo de 2 valores y pulsa calcular para ver los números del teorema de Pitágoras.</p>
 			<br>
-			<p>Inserta un mínimo de 2 valores y pulsa calcular con el teorema de Pitágoras.</p>
-			<br>
-			A: <input type="text" id="ElInput1" value="3" style="width: 100px; background-color: green; color: white;" />
-			B: <input type="text" id="ElInput2" value="4" style="width: 100px; background-color: blue; color: white;" />
-			C: <input type="text" id="ElInput3" value="" style="width: 100px; background-color: red; color: white;" />
-			<br><br>
-			<input type="button" id="ElButton1" class="MyInput" value="Calcular Teorema de Pitágoras" onclick="CalcularTeoremaPitagoras()" />
+			A: <input type="text" id="ElInput1" value="3" style="width: 80px; background-color: green; color: white;" />
+			B: <input type="text" id="ElInput2" value="4" style="width: 80px; background-color: blue; color: white;" />
+			C: <input type="text" id="ElInput3" value="" style="width: 80px; background-color: red; color: white;" />
+			<input type="button" id="ElButton1" class="MyInput" value="Calcular" onclick="CalcularTeoremaPitagoras()" />
 			<br><br>
 			<label id="Resultado1">Resultado.</label>
-			<br><br>
+			<br>
 		</section>
 		
 		<!-- Pantalla 3 -->
@@ -76,11 +74,10 @@
 			<br>
 			A: <input type="text" id="ElInput4" value="3" style="width: 100px; background-color: green; color: white;" />
 			B: <input type="text" id="ElInput5" value="4" style="width: 100px; background-color: blue; color: white;" />
-			<br><br>
-			<input type="button" id="ElButton2" class="MyInput" value="Calcular Teorema de Pol" onclick="CalcularTeoremaPol()" />
+			<input type="button" id="ElButton2" class="MyInput" value="Calcular Polidiana" onclick="CalcularTeoremaPol()" />
 			<br><br>
 			<label id="Resultado2">Resultado.</label>
-			<br><br>
+			<br>
 		</section>
 		
 		<!-- Pantalla 4 -->
@@ -109,7 +106,7 @@
 			<br><br>
 		</section>
 		
-		<footer id="FechaInicioFechaFin" ><a href="mailto:polflorez@hotmail.com">polflorez@hotmail.com</a> ~ 18/04/2025 - 17/03/2026</footer>
+		<footer id="FechaInicioFechaFin" ><a href="mailto:polflorez@hotmail.com">polflorez@hotmail.com</a> ~ 18/04/2025 - 21/03/2026</footer>
 	</center>	
 </body>
 </html>
