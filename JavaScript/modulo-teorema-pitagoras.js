@@ -149,7 +149,7 @@ function CalcularTeoremaPitagoras(){
 		var EsTerna = " No es Terna Pitagórica.";
 		var LargadaC = "" + Cuadrado(LadoC);
 		var LargadaLadoC = "" + LadoC;
-		if (Cuadrado(LadoA)+Cuadrado(LadoB)==Cuadrado(LadoC) && LargadaC.length >= LargadaLadoC.length ){ EsTerna = " es Terna Pitagórica."; }
+		if (Cuadrado(LadoA)+Cuadrado(LadoB)==Cuadrado(LadoC) && LargadaC.length > LargadaLadoC.length ){ EsTerna = " es Terna Pitagórica."; }
 		document.getElementById("Resultado1").innerHTML = document.getElementById("Resultado1").innerHTML + '<br><label style="color: yellow;">(' + LadoA + "^2)+(" + LadoB + "^2)=(" + LadoC + "^2)</label>" + EsTerna;
 		var GradoLadoB = 0; // Grados(LadoA,LadoB,LadoC);
 		var GradoLadoA = 0; // 90 - Grados(LadoA,LadoB,LadoC);
@@ -184,7 +184,7 @@ function CalcularTeoremaPitagoras(){
 		var EsTerna = " No es Terna Pitagórica.";
 		var LargadaC = "" + Cuadrado(LadoC);
 		var LargadaLadoC = "" + LadoC;
-		if (Cuadrado(LadoA)+Cuadrado(LadoB)==Cuadrado(LadoC) && LargadaC.length >= LargadaLadoC.length ){ EsTerna = " es Terna Pitagórica."; }
+		if (Cuadrado(LadoA)+Cuadrado(LadoB)==Cuadrado(LadoC) && LargadaC.length > LargadaLadoC.length ){ EsTerna = " es Terna Pitagórica."; }
 		document.getElementById("Resultado1").innerHTML = document.getElementById("Resultado1").innerHTML + '<br><label style="color: yellow;">(' + LadoA + "^2)+(" + LadoB + "^2)=(" + LadoC + "^2)</label>" + EsTerna;
 		var GradoLadoB = 0; // Grados(LadoA,LadoB,LadoC);
 		var GradoLadoA = 0; // 90 - Grados(LadoA,LadoB,LadoC);
@@ -219,7 +219,7 @@ function CalcularTeoremaPitagoras(){
 		var EsTerna = " No es Terna Pitagórica.";
 		var LargadaC = "" + Cuadrado(LadoC);
 		var LargadaLadoC = "" + LadoC;
-		if (Cuadrado(LadoA)+Cuadrado(LadoB)==Cuadrado(LadoC) && LargadaC.length >= LargadaLadoC.length ){ EsTerna = " es Terna Pitagórica."; }
+		if (Cuadrado(LadoA)+Cuadrado(LadoB)==Cuadrado(LadoC) && LargadaC.length > LargadaLadoC.length ){ EsTerna = " es Terna Pitagórica."; }
 		document.getElementById("Resultado1").innerHTML = document.getElementById("Resultado1").innerHTML + '<br><label style="color: yellow;">(' + LadoA + "^2)+(" + LadoB + "^2)=(" + LadoC + "^2)</label>" + EsTerna;
 		var GradoLadoB = 0; // Grados(LadoA,LadoB,LadoC);
 		var GradoLadoA = 0; // 90 - Grados(LadoA,LadoB,LadoC);
