@@ -198,7 +198,11 @@ function CalcularTeoremaPitagoras(){
 					}
 				}
 				if ( Number.isInteger(DatoA) == false && Number.isInteger(DatoB) == false ) {
-					TextoDato = "C=(" + DatoA + "+" + DatoB + ")-(" + (DatoA*0.5)  + ")=" + ((DatoA+DatoB)-(DatoA*0.5));
+					if ( DatoA >= 1  ){
+						TextoDato = "C=(" + DatoA + "+" + DatoB + ")-(" + (0.5)  + ")=" + ((DatoA+DatoB)-0.5);
+					}else{	
+						TextoDato = "C=(" + DatoA + "+" + DatoB + ")-(" + (DatoA*0.5)  + ")=" + ((DatoA+DatoB)-(DatoA*0.5));
+					}
 				}
 			}
 		}else{
@@ -242,7 +246,11 @@ function CalcularTeoremaPitagoras(){
 					}
 				}
 				if ( Number.isInteger(DatoA) == false && Number.isInteger(DatoB) == false ) {
-					TextoDato = "C=(" + DatoA + "+" + DatoB + ")-(" + (DatoB*0.5)  + ")=" + ((DatoA+DatoB)-(DatoB*0.5));		
+					if ( DatoB >= 1  ){
+						TextoDato = "C=(" + DatoA + "+" + DatoB + ")-(" + (0.5)  + ")=" + ((DatoA+DatoB)-0.5);
+					}else{	
+						TextoDato = "C=(" + DatoA + "+" + DatoB + ")-(" + (DatoB*0.5)  + ")=" + ((DatoA+DatoB)-(DatoB*0.5));
+					}
 				}
 			}
 		}
@@ -321,7 +329,11 @@ function CalcularTeoremaPitagoras(){
 					}
 				}
 				if ( Number.isInteger(DatoA) == false && Number.isInteger(DatoB) == false ) {
-					TextoDato = "C=(" + DatoA + "+" + DatoB + ")-(" + (DatoA*0.5)  + ")=" + ((DatoA+DatoB)-(DatoA*0.5));
+					if ( DatoA >= 1  ){
+						TextoDato = "C=(" + DatoA + "+" + DatoB + ")-(" + (0.5)  + ")=" + ((DatoA+DatoB)-0.5);
+					}else{	
+						TextoDato = "C=(" + DatoA + "+" + DatoB + ")-(" + (DatoA*0.5)  + ")=" + ((DatoA+DatoB)-(DatoA*0.5));
+					}
 				}
 			}
 		}else{
@@ -365,7 +377,11 @@ function CalcularTeoremaPitagoras(){
 					}
 				}
 				if ( Number.isInteger(DatoA) == false && Number.isInteger(DatoB) == false ) {
-					TextoDato = "C=(" + DatoA + "+" + DatoB + ")-(" + (DatoB*0.5)  + ")=" + ((DatoA+DatoB)-(DatoB*0.5));		
+					if ( DatoB >= 1  ){
+						TextoDato = "C=(" + DatoA + "+" + DatoB + ")-(" + (0.5)  + ")=" + ((DatoA+DatoB)-0.5);
+					}else{	
+						TextoDato = "C=(" + DatoA + "+" + DatoB + ")-(" + (DatoB*0.5)  + ")=" + ((DatoA+DatoB)-(DatoB*0.5));
+					}
 				}
 			}
 		}
@@ -444,7 +460,11 @@ function CalcularTeoremaPitagoras(){
 					}
 				}
 				if ( Number.isInteger(DatoA) == false && Number.isInteger(DatoB) == false ) {
-					TextoDato = "C=(" + DatoA + "+" + DatoB + ")-(" + (DatoA*0.5)  + ")=" + ((DatoA+DatoB)-(DatoA*0.5));
+					if ( DatoA >= 1  ){
+						TextoDato = "C=(" + DatoA + "+" + DatoB + ")-(" + (0.5)  + ")=" + ((DatoA+DatoB)-0.5);
+					}else{	
+						TextoDato = "C=(" + DatoA + "+" + DatoB + ")-(" + (DatoA*0.5)  + ")=" + ((DatoA+DatoB)-(DatoA*0.5));
+					}
 				}
 			}
 		}else{
@@ -488,7 +508,11 @@ function CalcularTeoremaPitagoras(){
 					}
 				}
 				if ( Number.isInteger(DatoA) == false && Number.isInteger(DatoB) == false ) {
-					TextoDato = "C=(" + DatoA + "+" + DatoB + ")-(" + (DatoB*0.5)  + ")=" + ((DatoA+DatoB)-(DatoB*0.5));		
+					if ( DatoB >= 1  ){
+						TextoDato = "C=(" + DatoA + "+" + DatoB + ")-(" + (0.5)  + ")=" + ((DatoA+DatoB)-0.5);
+					}else{	
+						TextoDato = "C=(" + DatoA + "+" + DatoB + ")-(" + (DatoB*0.5)  + ")=" + ((DatoA+DatoB)-(DatoB*0.5));
+					}
 				}
 			}
 		}
