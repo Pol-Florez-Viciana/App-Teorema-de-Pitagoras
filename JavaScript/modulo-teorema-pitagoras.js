@@ -161,13 +161,13 @@ function CalcularTeoremaPitagoras(){
 			GradoLadoA = Grados(LadoA,LadoB,LadoC);
 			GradoLadoB = 90 - Grados(LadoA,LadoB,LadoC);
 			if ( Number.isInteger(DatoA) == true && Number.isInteger(DatoB) == true ) {
-				if ((DatoB - 1) % 2 != 0 ){
-					TextoDato = "C=(" + DatoA + "+" + DatoB + ")-(" + (DatoA - 1) + ")=" + ((DatoA + DatoB)-(DatoA - 1));
+				if ((DatoA - 1) % 2 != 0 ){
+					TextoDato = "C=(" + DatoA + "+" + DatoB + ")-(" + (DatoB - 1) + ")=" + ((DatoA + DatoB)-(DatoB - 1));
 				}else{
-					TextoDato = "C=(" + DatoA + "+" + DatoB + ")-(" + (DatoA - 2) + ")=" + ((DatoA + DatoB)-(DatoA - 2));
+					TextoDato = "C=(" + DatoA + "+" + DatoB + ")-(" + (DatoB - 2) + ")=" + ((DatoA + DatoB)-(DatoB - 2));
 				}
 			}else{
-				if ( Number.isInteger(DatoB) == true ) {
+				if ( Number.isInteger(DatoA) == true ) {
 					if ( (DatoA + DatoB) >= 1 ){
 						if ((DatoB - 1) % 2 != 0 ){
 							if ( DatoB <= 2 ){
@@ -190,7 +190,7 @@ function CalcularTeoremaPitagoras(){
 						TextoDato = "C=(" + DatoA + "+" + DatoB + ")-(" + (DatoB - 2) + ")=" + (DatoB - 2);
 					}
 				}
-				if ( Number.isInteger(DatoA) == true ) {
+				if ( Number.isInteger(DatoB) == true ) {
 					if ( DatoB == 2  ){
 						TextoDato = "C=(" + DatoA + "+" + DatoB + ")-(1.5)=" + ((DatoA + DatoB) - 1.5);
 					}else{
@@ -284,17 +284,21 @@ function CalcularTeoremaPitagoras(){
 			GradoLadoA = Grados(LadoA,LadoB,LadoC);
 			GradoLadoB = 90 - Grados(LadoA,LadoB,LadoC);
 			if ( Number.isInteger(DatoA) == true && Number.isInteger(DatoB) == true ) {
-				if ((DatoB - 1) % 2 != 0 ){
-					TextoDato = "C=(" + DatoA + "+" + DatoB + ")-(" + (DatoA - 1) + ")=" + ((DatoA + DatoB)-(DatoA - 1));
+				if ((DatoA - 1) % 2 != 0 ){
+					TextoDato = "C=(" + DatoA + "+" + DatoB + ")-(" + (DatoB - 1) + ")=" + ((DatoA + DatoB)-(DatoB - 1));
 				}else{
-					TextoDato = "C=(" + DatoA + "+" + DatoB + ")-(" + (DatoA - 2) + ")=" + ((DatoA + DatoB)-(DatoA - 2));
+					TextoDato = "C=(" + DatoA + "+" + DatoB + ")-(" + (DatoB - 2) + ")=" + ((DatoA + DatoB)-(DatoB - 2));
 				}
 			}else{
-				if ( Number.isInteger(DatoB) == true ) {
+				if ( Number.isInteger(DatoA) == true ) {
 					if ( (DatoA + DatoB) >= 1 ){
 						if ((DatoB - 1) % 2 != 0 ){
 							if ( DatoB <= 2 ){
-								TextoDato = "C=(" + DatoA + "+" + DatoB + ")-(1)=" + ((DatoA + DatoB) - 1);
+								if (DatoA == 1) {
+									TextoDato = "C=(" + DatoA + "+" + DatoB + ")-(0.5)=" + ((DatoA + DatoB) - 0.5);
+								}else{
+									TextoDato = "C=(" + DatoA + "+" + DatoB + ")-(1)=" + ((DatoA + DatoB) - 1);
+								}
 							}else{
 								if (DatoA == 1) {
 									TextoDato = "C=(" + DatoA + "+" + DatoB + ")-(0.5)=" + ((DatoA + DatoB) - 0.5);
@@ -309,7 +313,7 @@ function CalcularTeoremaPitagoras(){
 						TextoDato = "C=(" + DatoA + "+" + DatoB + ")-(" + (DatoB - 2) + ")=" + (DatoB - 2);
 					}
 				}
-				if ( Number.isInteger(DatoA) == true ) {
+				if ( Number.isInteger(DatoB) == true ) {
 					if ( DatoB == 2  ){
 						TextoDato = "C=(" + DatoA + "+" + DatoB + ")-(1.5)=" + ((DatoA + DatoB) - 1.5);
 					}else{
@@ -334,7 +338,11 @@ function CalcularTeoremaPitagoras(){
 					if ((DatoA + DatoB) >= 1 ){
 						if ((DatoA - 1) % 2 != 0 ){
 							if ( DatoA <= 2 ){
-								TextoDato = "C=(" + DatoA + "+" + DatoB + ")-(1)=" + ((DatoA + DatoB) - 1);
+								if (DatoB == 1) {
+									TextoDato = "C=(" + DatoA + "+" + DatoB + ")-(0.5)=" + ((DatoA + DatoB) - 0.5);
+								}else{
+									TextoDato = "C=(" + DatoA + "+" + DatoB + ")-(1)=" + ((DatoA + DatoB) - 1);
+								}
 							}else{
 								if (DatoB == 1) {
 									TextoDato = "C=(" + DatoA + "+" + DatoB + ")-(0.5)=" + ((DatoA + DatoB) - 0.5);
@@ -399,17 +407,21 @@ function CalcularTeoremaPitagoras(){
 			GradoLadoA = Grados(LadoA,LadoB,LadoC);
 			GradoLadoB = 90 - Grados(LadoA,LadoB,LadoC);
 			if ( Number.isInteger(DatoA) == true && Number.isInteger(DatoB) == true ) {
-				if ((DatoB - 1) % 2 != 0 ){
-					TextoDato = "C=(" + DatoA + "+" + DatoB + ")-(" + (DatoA - 1) + ")=" + ((DatoA + DatoB)-(DatoA - 1));
+				if ((DatoA - 1) % 2 != 0 ){
+					TextoDato = "C=(" + DatoA + "+" + DatoB + ")-(" + (DatoB - 1) + ")=" + ((DatoA + DatoB)-(DatoB - 1));
 				}else{
-					TextoDato = "C=(" + DatoA + "+" + DatoB + ")-(" + (DatoA - 2) + ")=" + ((DatoA + DatoB)-(DatoA - 2));
+					TextoDato = "C=(" + DatoA + "+" + DatoB + ")-(" + (DatoB - 2) + ")=" + ((DatoA + DatoB)-(DatoB - 2));
 				}
 			}else{
-				if ( Number.isInteger(DatoB) == true ) {
+				if ( Number.isInteger(DatoA) == true ) {
 					if ( (DatoA + DatoB) >= 1 ){
 						if ((DatoB - 1) % 2 != 0 ){
 							if ( DatoB <= 2 ){
-								TextoDato = "C=(" + DatoA + "+" + DatoB + ")-(1)=" + ((DatoA + DatoB) - 1);
+								if (DatoA == 1) {
+									TextoDato = "C=(" + DatoA + "+" + DatoB + ")-(0.5)=" + ((DatoA + DatoB) - 0.5);
+								}else{
+									TextoDato = "C=(" + DatoA + "+" + DatoB + ")-(1)=" + ((DatoA + DatoB) - 1);
+								}
 							}else{
 								if (DatoA == 1) {
 									TextoDato = "C=(" + DatoA + "+" + DatoB + ")-(0.5)=" + ((DatoA + DatoB) - 0.5);
@@ -424,7 +436,7 @@ function CalcularTeoremaPitagoras(){
 						TextoDato = "C=(" + DatoA + "+" + DatoB + ")-(" + (DatoB - 2) + ")=" + (DatoB - 2);
 					}
 				}
-				if ( Number.isInteger(DatoA) == true ) {
+				if ( Number.isInteger(DatoB) == true ) {
 					if ( DatoB == 2  ){
 						TextoDato = "C=(" + DatoA + "+" + DatoB + ")-(1.5)=" + ((DatoA + DatoB) - 1.5);
 					}else{
@@ -449,7 +461,11 @@ function CalcularTeoremaPitagoras(){
 					if ((DatoA + DatoB) >= 1 ){
 						if ((DatoA - 1) % 2 != 0 ){
 							if ( DatoA <= 2 ){
-								TextoDato = "C=(" + DatoA + "+" + DatoB + ")-(1)=" + ((DatoA + DatoB) - 1);
+								if (DatoB == 1) {
+									TextoDato = "C=(" + DatoA + "+" + DatoB + ")-(0.5)=" + ((DatoA + DatoB) - 0.5);
+								}else{
+									TextoDato = "C=(" + DatoA + "+" + DatoB + ")-(1)=" + ((DatoA + DatoB) - 1);
+								}
 							}else{
 								if (DatoB == 1) {
 									TextoDato = "C=(" + DatoA + "+" + DatoB + ")-(0.5)=" + ((DatoA + DatoB) - 0.5);
