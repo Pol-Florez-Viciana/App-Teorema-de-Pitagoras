@@ -171,7 +171,11 @@ function CalcularTeoremaPitagoras(){
 					if ( (DatoA + DatoB) >= 1 ){
 						if ((DatoB - 1) % 2 != 0 ){
 							if ( DatoB <= 2 ){
-								TextoDato = "C=(" + DatoA + "+" + DatoB + ")-(1)=" + ((DatoA + DatoB) - 1);
+								if (DatoA == 1) {
+									TextoDato = "C=(" + DatoA + "+" + DatoB + ")-(0.5)=" + ((DatoA + DatoB) - 0.5);
+								}else{
+									TextoDato = "C=(" + DatoA + "+" + DatoB + ")-(1)=" + ((DatoA + DatoB) - 1);
+								}
 							}else{
 								if (DatoA == 1) {
 									TextoDato = "C=(" + DatoA + "+" + DatoB + ")-(0.5)=" + ((DatoA + DatoB) - 0.5);
@@ -211,7 +215,11 @@ function CalcularTeoremaPitagoras(){
 					if ((DatoA + DatoB) >= 1 ){
 						if ((DatoA - 1) % 2 != 0 ){
 							if ( DatoA <= 2 ){
-								TextoDato = "C=(" + DatoA + "+" + DatoB + ")-(1)=" + ((DatoA + DatoB) - 1);
+								if (DatoB == 1) {
+									TextoDato = "C=(" + DatoA + "+" + DatoB + ")-(0.5)=" + ((DatoA + DatoB) - 0.5);
+								}else{
+									TextoDato = "C=(" + DatoA + "+" + DatoB + ")-(1)=" + ((DatoA + DatoB) - 1);
+								}
 							}else{
 								if (DatoB == 1) {
 									TextoDato = "C=(" + DatoA + "+" + DatoB + ")-(0.5)=" + ((DatoA + DatoB) - 0.5);
